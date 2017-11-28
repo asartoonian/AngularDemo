@@ -1,38 +1,22 @@
 
 <!DCOTYPE html>
 <html data-ng-app="">
-	<head>
-		<title>Testing AngularJS</title>
-
-
-	</head>
-	<body>
+<head>
+	<title>Testing AngularJS</title>
+</head>
+<body>
+	<div data-ng-controller="SimpleController">
 		Name:
-	</br>
-	<input type="text" data-ng-model="name"> 
+		<br />
+		<input type="text" data-ng-model="name"> 
+		<br />
+		<ul>
+			<li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">
+				{{cust.name}} - {{cust.city}}
+			</li>
+		</ul>
 
-</br>
-
-	
-
-
-	</br>
-	<ul>
-		<li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">
-			{{cust.name}} - {{cust.city}}
-
-
-
-		</li>
-		
-
-
-
-
-
-	</ul>
-
-
+	</div>
 
 
 
@@ -40,15 +24,13 @@
 		<script src="angular.min.js"></script>
 
 		<script>
-			function SimpleController($scope){
-
-
-
-				
+			function SimpleController($scope) {
+				$scope.customers = [
+					{ name:'John Smoth', city:'San Diego' },
+					{ name:'John Appleeed', city:'pasasdena' }, 
+					{ name:'Allen Artoonian', city:'Glendale' }
+					];
 			}
-
-
-
 		</script>
 
 
